@@ -5,7 +5,10 @@ using System.Text;
 
 namespace Lands.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
     using System.Windows.Input;
+    using Xamarin.Forms;
+
     class LoginViewModel
     {
         #region Properties
@@ -31,7 +34,30 @@ namespace Lands.ViewModels
 
         #region Commands
         public ICommand LoginCommand
-        { get; set; }
+        {
+            get
+            {
+                return new RelayCommand(Login);
+            }
+        }
+
+        private async void Login()
+        {
+            if(string.IsNullOrEmpty(this.Email))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error",
+                    "Debe ingresar su correo",
+                    "Aceptar");
+                return;
+            }
+            if (string.IsNullOrEmpty(this.Password))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error",
+                    "Debe ingresar su contraseña",
+                    "Aceptar");
+                return;
+            }
+        }
         #endregion
     }
 }
