@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Xamarin.Forms;
 
 namespace Lands.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
     using System.Windows.Input;
-    using Xamarin.Forms;
+    
 
     class LoginViewModel
     {
@@ -53,7 +53,7 @@ namespace Lands.ViewModels
             if (string.IsNullOrEmpty(this.Password))
             {
                 await Application.Current.MainPage.DisplayAlert("Error",
-                    "Debe ingresar su contraseña",
+                    "Debe ingresar su contraseña", 
                     "Aceptar");
                 return;
             }
