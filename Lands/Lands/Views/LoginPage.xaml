@@ -82,7 +82,8 @@
                         BorderRadius="23"
                         Command="{Binding LoginCommand}"
                         HeightRequest="46"
-                        HorizontalOptions="FillAndExpand"    
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         Text="Ingresar"
                         TextColor="White">
                     </Button>
@@ -91,6 +92,7 @@
                         BorderRadius="23"
                         HeightRequest="46"
                         HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"                        
                         Text="Registrarme"
                         TextColor="White">
                     </Button>

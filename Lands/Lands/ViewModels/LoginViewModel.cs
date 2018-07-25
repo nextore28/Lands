@@ -1,33 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Lands.ViewModels
+﻿namespace Lands.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
     using System.Windows.Input;
     using Xamarin.Forms;
-    
-    class LoginViewModel
+
+    public class LoginViewModel : BaseViewModel
     {
+
+        #region Attributes
+        private string password;
+        private bool isRunning;
+        private bool isEnabled;
+        #endregion
+
         #region Properties
         public string Email
         { get; set; }
 
         public string Password
-        { get; set; }
+        {
+            get { return this.password; }
+            set { SetValue(ref this.password, value); }
+        }
 
         public bool IsRunning
-        { get; set; }
+        {
+            get { return this.isRunning; }
+            set { SetValue(ref this.isRunning, value); }
+        }
 
         public bool IsRemembered
         { get; set; }
+
+        public bool IsEnabled
+        {
+            get { return this.isEnabled; }
+            set { SetValue(ref this.isEnabled, value); }
+        }
         #endregion
 
         #region Constructors
         public LoginViewModel()
         {
             this.IsRemembered = true;
+            this.isEnabled = true;
         }
         #endregion
 
@@ -58,12 +74,22 @@ namespace Lands.ViewModels
                 return;
             }
 
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
             if(this.Email !="nextore28@gmail.com" || this.Password !="1234")
             {
+                this.IsRunning = false;
+                this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert("Error",
                     "Usuario o contraseña incorrectos",
                     "Aceptar");
+                this.Password = string.Empty;
+                return;
             }
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
 
             await Application.Current.MainPage.DisplayAlert("Bienvenido",
             "Login correcto",
