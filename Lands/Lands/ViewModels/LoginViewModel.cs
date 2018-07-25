@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Xamarin.Forms;
 
 namespace Lands.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
     using System.Windows.Input;
+    using Xamarin.Forms;
     
-
     class LoginViewModel
     {
         #region Properties
@@ -18,7 +17,7 @@ namespace Lands.ViewModels
         public string Password
         { get; set; }
 
-        public bool  IsRunning
+        public bool IsRunning
         { get; set; }
 
         public bool IsRemembered
@@ -50,6 +49,7 @@ namespace Lands.ViewModels
                     "Aceptar");
                 return;
             }
+
             if (string.IsNullOrEmpty(this.Password))
             {
                 await Application.Current.MainPage.DisplayAlert("Error",
@@ -57,6 +57,17 @@ namespace Lands.ViewModels
                     "Aceptar");
                 return;
             }
+
+            if(this.Email !="nextore28@gmail.com" || this.Password !="1234")
+            {
+                await Application.Current.MainPage.DisplayAlert("Error",
+                    "Usuario o contraseña incorrectos",
+                    "Aceptar");
+            }
+
+            await Application.Current.MainPage.DisplayAlert("Bienvenido",
+            "Login correcto",
+            "Ok");
         }
         #endregion
     }
