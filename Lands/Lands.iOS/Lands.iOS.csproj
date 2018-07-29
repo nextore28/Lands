@@ -168,4 +168,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\logo_ig.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_chevron_right.png" />
+  </ItemGroup>
 </Project>
